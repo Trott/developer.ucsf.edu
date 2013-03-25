@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dev@UCSF</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Dev@UCSF</h1>
+        </div>
+        <h2>Person Search JavaScript API</h2>
+        <h3>1. Obtain an API key</h3>
+        <p>Request an API key by emailing
+            <a href="mailto:Richard.Trott@ucsf.edu"</a>Richard.Trott@ucsf.edu</a>.
+            We'll set up a form for this soon. Honest.</p>
+        <h3>2. Insert &lt;script> tag in your page to load API</h3>
+        <pre>&lt;script src="http://apis.ucsf.edu/static/UCSF.Person.js">&lt;/script></pre>
+        <h3>3. Call <code>UCSF.Person.search()</code></h3>
+        <p><code>UCSF.Person.search()</code> takes three parameters.</p>
+        <ol>
+            <li><code>options</code> object containing the required <code>apikey</code> property and one or more of <code>first_name</code>, <code>last_name</code>, and <code>dep_name</code> properties</li>
+            <li><code>success</code> callback that is passed a <code>results</code> object if there were no errors. The <code>results</code> object will never contain more than 20 results.</li>
+            <li>optional <code>failure</code> callback for when something goes horribly wrong</li>
+        </ol>
+        <h3>Demo &amp; Example Code</h3>
+        <script src="http://apis.ucsf.edu/static/UCSF.Person.js"></script>
+        <form action="javascript:search()">
+            <label for="first_name">First name</label><input name="first_name" id="first_name" />
+            <label for="last_name">Last name</label><input name="last_name" id="last_name" />
+            <label for="dep_name">Department</label><input name="dep_name" id="dep_name" />
+            <input type="submit" id="submit" />
+        </form>
+        <pre id="search_results">
+JSON results will appear here.
+        </pre>
+        <script>
+            function search() {
+                document.getElementById("search_results").innerHTML = "<progress>Loading...</progress>";
+
+                var options = {};
+                options.apikey = "51fe26c346b710d1fce62ad748000c00"; // You will need to change this to your API key
+                options.first_name = document.getElementById("first_name").value;
+                options.last_name = document.getElementById("last_name").value;
+                options.dep_name = document.getElementById("dep_name").value;
+console.dir(options);
+                var successCallback = render;
+                var failureCallback = null; // failureCallback is optional
+
+                UCSF.Person.search(options, successCallback, failureCallback);
+            }
+
+            function render(result) {
+                var search_results = document.getElementById("search_results");
+                var resultText = JSON.stringify(result, null, 4);
+                if ("textContent" in search_results) {
+                    search_results.textContent = resultText; 
+                } else {
+                    search_results.innerText = resultText;
+                }
+            };
+        </script>
+        <h4>Code</h4>
+        <pre>
+&lt;script src="http://apis.ucsf.edu/static/UCSF.Person.js">&lt;/script>
+&lt;form action="javascript:search()">
+    &lt;label for="first_name">First name&lt;/label>&lt;input name="first_name" id="first_name" />
+    &lt;label for="last_name">Last name&lt;/label>&lt;input name="last_name" id="last_name" />
+    &lt;label for="dep_name">Department&lt;/label>&lt;input name="dep_name" id="dep_name" />
+    &lt;input type="submit" id="submit" />
+&lt;/form>
+&lt;pre id="search_results">
+JSON results will appear here.
+&lt;/pre>
+&lt;script>
+    function search() {
+        document.getElementById("search_results").innerHTML = "&lt;progress>Loading...&lt;/progress>";
+
+        var options = {};
+        options.apikey = "51fe26c346b710d1fce62ad748000c00"; // You will need to change this to your API key
+        options.first_name = document.getElementById("first_name").value;
+        options.last_name = document.getElementById("last_name").value;
+        options.dep_name = document.getElementById("dep_name").value;
+
+        var successCallback = render;
+        var failureCallback = null; // failureCallback is optional
+
+        UCSF.Person.search(options, successCallback, failureCallback);
+    }
+
+    function render(result) {
+        var search_results = document.getElementById("search_results");
+        var resultText = JSON.stringify(result, null, 4);
+        if ("textContent" in search_results) {
+            search_results.textContent = resultText; 
+        } else {
+            search_results.innerText = resultText;
+        }
+    };
+&lt;/script>
+        </pre>
+    </div>
+</body>
+</html>
