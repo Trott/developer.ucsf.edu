@@ -1,0 +1,1 @@
+AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/css text/html text/plain text/xml
