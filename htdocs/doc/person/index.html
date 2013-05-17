@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dev@UCSF</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://apis.ucsf.edu/static/UCSF.Person.src.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -12,10 +13,7 @@
             <h1>Dev@UCSF</h1>
         </div>
         <h2>Person Search JavaScript API</h2>
-        <h3>1. Obtain an API key</h3>
-        <p>Request an API key by emailing
-            <a href="mailto:Richard.Trott@ucsf.edu">Richard.Trott@ucsf.edu</a>.
-            We'll set up a form for this soon. Honest.</p>
+        <h3>1. <a href="https://ucsf.co1.qualtrics.com/SE/?SID=SV_b1SnD7hSJgobAl7">Request an API key</a></h3>
         <h3>2. Insert &lt;script> tag in your page to load API</h3>
         <pre>&lt;script src="http://apis.ucsf.edu/static/UCSF.Person.js">&lt;/script></pre>
         <h3>3. Call <code>UCSF.Person.search()</code></h3>
@@ -25,8 +23,6 @@
             <li><code>success</code> callback that is passed a <code>results</code> object if there were no errors. The <code>results</code> object will never contain more than 20 results.</li>
             <li>optional <code>failure</code> callback for when something goes horribly wrong</li>
         </ol>
-        <h3>Demo &amp; Example Code</h3>
-        <script src="http://apis.ucsf.edu/static/UCSF.Person.js"></script>
         <form action="javascript:search()">
             <label for="first_name">First name</label><input name="first_name" id="first_name" />
             <label for="last_name">Last name</label><input name="last_name" id="last_name" />
