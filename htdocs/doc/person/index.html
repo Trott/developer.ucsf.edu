@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dev@UCSF</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="http://apis.ucsf.edu/static/UCSF.Person.src.js"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
         <h3>1. Obtain an API key</h3>
         <p>The <a href="https://ucsf.co1.qualtrics.com/SE/?SID=SV_b1SnD7hSJgobAl7">form for this</a> is pretty darned short. Should take you no time!</p>
         <h3>2. Insert &lt;script> tag in your page to load API</h3>
-        <pre>&lt;script src="http://apis.ucsf.edu/static/UCSF.Person.js">&lt;/script></pre>
+        <pre>&lt;script src="http://apis.ucsf.edu/jsapi?person">&lt;/script></pre>
         <h3>3. Call <code>UCSF.Person.search()</code></h3>
         <p><code>UCSF.Person.search()</code> takes three parameters.</p>
         <ol>
@@ -62,7 +62,7 @@ JSON results will appear here.
         </script>
         <h4>Code</h4>
         <pre>
-&lt;script src="http://apis.ucsf.edu/static/UCSF.Person.js">&lt;/script>
+&lt;script src="http://apis.ucsf.edu/jsapi?person">&lt;/script>
 &lt;form action="javascript:search()">
     &lt;label for="first_name">First name&lt;/label>&lt;input name="first_name" id="first_name" />
     &lt;label for="last_name">Last name&lt;/label>&lt;input name="last_name" id="last_name" />
