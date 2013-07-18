@@ -21,15 +21,13 @@
         <h4>3. Call <code>UCSF.Person.search()</code></h4>
         <p><code>UCSF.Person.search()</code> takes three parameters.</p>
         <ol>
-            <li><code>options</code> object containing the required <code>apikey</code> property and one or more of <code>first_name</code>, <code>last_name</code>, and <code>dep_name</code> properties</li>
+            <li><code>options</code> object containing the required <code>apikey</code> property and your keyword query in a <code>q</code> property
             <li><code>success</code> callback that is passed a <code>results</code> object if there were no errors. The <code>results</code> object will never contain more than 20 results.</li>
             <li>optional <code>failure</code> callback for when something goes horribly wrong</li>
         </ol>
         <h3>Demo</h3>
         <form action="javascript:search()">
-            <label for="first_name">First name</label><input name="first_name" id="first_name" />
-            <label for="last_name">Last name</label><input name="last_name" id="last_name" />
-            <label for="dep_name">Department</label><input name="dep_name" id="dep_name" />
+            <label for="q">Name or department</label><input name="q" id="q" />
             <input type="submit" id="submit" />
         </form>
         <h4>Results</h4>
@@ -42,9 +40,7 @@ JSON results will appear here.
 
                 var options = {};
                 options.apikey = "51fe26c346b710d1fce62ad748000c00"; // You will need to change this to your API key
-                options.first_name = document.getElementById("first_name").value;
-                options.last_name = document.getElementById("last_name").value;
-                options.dep_name = document.getElementById("dep_name").value;
+                options.q = document.getElementById("q").value;
 
                 var successCallback = render;
                 var failureCallback = null; // failureCallback is optional
@@ -66,9 +62,7 @@ JSON results will appear here.
         <pre>
 &lt;script src="http://apis.ucsf.edu/jsapi?person">&lt;/script>
 &lt;form action="javascript:search()">
-    &lt;label for="first_name">First name&lt;/label>&lt;input name="first_name" id="first_name" />
-    &lt;label for="last_name">Last name&lt;/label>&lt;input name="last_name" id="last_name" />
-    &lt;label for="dep_name">Department&lt;/label>&lt;input name="dep_name" id="dep_name" />
+    &lt;label for="q">Name or department&lt;/label>&lt;input name="q" id="q" />
     &lt;input type="submit" id="submit" />
 &lt;/form>
 &lt;pre id="search_results">
@@ -80,9 +74,7 @@ JSON results will appear here.
 
         var options = {};
         options.apikey = "51fe26c346b710d1fce62ad748000c00"; // You will need to change this to your API key
-        options.first_name = document.getElementById("first_name").value;
-        options.last_name = document.getElementById("last_name").value;
-        options.dep_name = document.getElementById("dep_name").value;
+        options.q = document.getElementById("q").value;
 
         var successCallback = render;
         var failureCallback = null; // failureCallback is optional
