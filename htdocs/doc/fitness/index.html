@@ -13,14 +13,12 @@
             <h1>Dev@UCSF</h1>
         </div>
         <h2>Fitness Schedule JavaScript API</h2>
-        <h3>1. Obtain an API key</h3>
-        <p>The <a href="https://ucsf.co1.qualtrics.com/SE/?SID=SV_b1SnD7hSJgobAl7">form for this</a> is pretty darned short. Should take you no time!</p>
-        <h3>2. Insert a &lt;script> tag in your page to load the API</h3>
+        <h3>1. Insert a &lt;script> tag in your page to load the API</h3>
         <pre>&lt;script src="http://apis.ucsf.edu/jsapi?fitness">&lt;/script></pre>
-        <h3>3. Call <code>UCSF.Fitness.schedule()</code></h3>
+        <h3>2. Call <code>UCSF.Fitness.schedule()</code></h3>
         <p><code>UCSF.Fitness.schedule()</code> takes three parameters.</p>
         <ol>
-            <li><code>options</code> object containing the required <code>apikey</code> property</li>
+            <li><code>options</code> object reserved for later use; use an empty object for now</li>
             <li><code>success</code> callback that is passed a <code>results</code> object if there were no errors</li>
             <li>optional <code>failure</code> callback for when something goes horribly wrong</li>
         </ol>
@@ -35,7 +33,6 @@
                 document.getElementById("search_results").innerHTML = "<progress>Loading...</progress>";
 
                 var options = {};
-                options.apikey = "51fe26c346b710d1fce62ad748000c00"; // You will need to change this to your API key
 
                 var successCallback = render;
                 var failureCallback = null; // failureCallback is optional
@@ -47,7 +44,7 @@
                 var search_results = document.getElementById("search_results");
                 var resultText = JSON.stringify(result, null, 4);
                 if ("textContent" in search_results) {
-                    search_results.textContent = resultText; 
+                    search_results.textContent = resultText;
                 } else {
                     search_results.innerText = resultText;
                 }
@@ -64,7 +61,6 @@
         document.getElementById("search_results").innerHTML = "&lt;progress>Loading...&lt;/progress>";
 
         var options = {};
-        options.apikey = "51fe26c346b710d1fce62ad748000c00"; // You will need to change this to your API key
 
         var successCallback = render;
         var failureCallback = null; // failureCallback is optional
@@ -76,7 +72,7 @@
         var search_results = document.getElementById("search_results");
         var resultText = JSON.stringify(result, null, 4);
         if ("textContent" in search_results) {
-            search_results.textContent = resultText; 
+            search_results.textContent = resultText;
         } else {
             search_results.innerText = resultText;
         }
